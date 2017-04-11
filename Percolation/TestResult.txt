@@ -1,0 +1,188 @@
+Test 5: Test that stddev() is consistent with the number of intercepted calls to open()
+        on blocked sites
+  * n =  20, trials =  10
+    - student PercolationStats stddev()           = 1.8640271516858926
+    - anticipated stddev   from intercepted calls = 0.038809542068356795
+    - anticipated variance from intercepted calls = 0.001506180555555556
+  * n =  50, trials =  20
+    - student PercolationStats stddev()           = 3.4636462549412323
+    - anticipated stddev   from intercepted calls = 0.027657149071023974
+    - anticipated variance from intercepted calls = 7.649178947368423E-4
+  * n = 100, trials =  50
+    - student PercolationStats stddev()           = 8.653049073523158
+    - anticipated stddev   from intercepted calls = 0.01739318609251851
+    - anticipated variance from intercepted calls = 3.0252292244897934E-4
+  * n =  64, trials = 150
+    - student PercolationStats stddev()           = 25.647148739019137
+    - anticipated stddev   from intercepted calls = 0.021775703997202658
+    - anticipated variance from intercepted calls = 4.7418128457378777E-4
+==> FAILED
+
+Test 6: Test that confidenceLo() and confidenceHigh() are consistent with mean() and stddev()
+  * n =  20, trials =  10
+  * n =  50, trials =  20
+  * n = 100, trials =  50
+  * n =  64, trials = 150
+==> passed
+
+Test 7: Check whether exception is thrown if either n or trials is out of bounds
+  * n = -23, trials =  42
+  * n =  23, trials =   0
+  * n = -42, trials =   0
+  * n =  42, trials =  -1
+==> passed
+
+Test 8: Create two PercolationStats objects at the same time and check mean()
+        (to make sure you didn't store data in static variables)
+  * n1 =  50, trials1 =  10, n2 =  50, trials2 =   5
+    - PercolationStats object 1 mean = 3.19228
+    - total calls to open() / (N1*N1*T1)  = 0.5809999999999998
+  * n1 =  50, trials1 =   5, n2 =  50, trials2 =  10
+    - PercolationStats object 1 mean = 1.7579999999999998
+    - total calls to open() / (N1*N1*T1)  = 0.5966400000000001
+  * n1 =  50, trials1 =  10, n2 =  25, trials2 =  10
+    - PercolationStats object 1 mean = 3.2110399999999997
+    - total calls to open() / (N1*N1*T1)  = 0.58308
+  * n1 =  25, trials1 =  10, n2 =  50, trials2 =  10
+    - PercolationStats object 1 mean = 3.1744
+    - total calls to open() / (N1*N1*T1)  = 0.57088
+  * n1 =  50, trials1 =  10, n2 =  15, trials2 = 100
+    - PercolationStats object 1 mean = 3.28444
+    - total calls to open() / (N1*N1*T1)  = 0.59412
+  * n1 =  15, trials1 = 100, n2 =  50, trials2 =  10
+    - PercolationStats object 1 mean = 29.452444444444446
+    - total calls to open() / (N1*N1*T1)  = 0.5846666666666668
+==> FAILED
+
+Test 9: Check that the methods return the same value, regardless of
+        the order in which they are called
+  * n =  20, trials =  10
+  * n =  50, trials =  20
+  * n = 100, trials =  50
+  * n =  64, trials = 150
+==> passed
+
+Test 10: Check for any calls to StdRandom.setSeed()
+  * n = 20, trials = 10
+  * n = 20, trials = 10
+  * n = 40, trials = 10
+  * n = 80, trials = 10
+==> passed
+
+Test 11: Check distribution of number of sites opened until percolation
+  * n = 2, trials = 100000
+  * n = 3, trials = 100000
+  * n = 4, trials = 100000
+==> passed
+
+
+Total: 8/11 tests passed!
+
+
+================================================================
+********************************************************************************
+*  MEMORY (substituting reference Percolation)
+********************************************************************************
+
+Computing memory of PercolationStats
+*-----------------------------------------------------------
+Running 4 total tests.
+
+Test 1a-1d: Memory usage as a function of trials for n = 100
+            (max allowed: 8*trials + 128 bytes)
+
+            trials        bytes
+--------------------------------------------
+=> passed       16          184
+=> passed       32          312
+=> passed       64          568
+=> passed      128         1080
+==> 4/4 tests passed
+
+
+Estimated student memory = 8.00 T + 56.00   (R^2 = 1.000)
+
+Total: 4/4 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  MEMORY
+********************************************************************************
+
+Computing memory of Percolation
+*-----------------------------------------------------------
+Running 4 total tests.
+
+Test 1a-1d: Check that total memory <= 17 n^2 + 128 n + 1024 bytes
+
+                 n        bytes
+--------------------------------------------
+=> passed       64        39088
+=> passed      256       598192
+=> passed      512      2375856
+=> passed     1024      9470128
+==> 4/4 tests passed
+
+
+Estimated student memory = 9.00 n^2 + 32.00 n + 176.00   (R^2 = 1.000)
+
+
+Test 2 (bonus): Check that total memory <= 11 n^2 + 128 n + 1024 bytes
+   -  bonus available only if solution passes backwash correctness test
+==> FAILED
+
+
+Total: 4/4 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  TIMING
+********************************************************************************
+
+Timing Percolation
+*-----------------------------------------------------------
+Running 9 total tests.
+
+Test 1a-1e: Create an n-by-n percolation system; open sites at random until
+            the system percolates. Count calls to connected(), union() and
+            find() in WeightedQuickUnionUF.
+                                                 2 * connected()
+                 n   seconds       union()              + find()        constructor
+---------------------------------------------------------------------------------------------
+=> passed        8     0.00           66                   250                   1
+=> passed       32     0.00          760                  3092                   1
+=> passed      128     0.01        11294                 48006                   1
+=> passed      512     0.06       185343                785726                   1
+=> passed     1024     0.19       728916               3100964                   1
+==> 5/5 tests passed
+
+Running time in seconds depends on the machine on which the script runs,
+and  varies each time that you submit. If one of the values in the table
+violates the performance limits, the factor by which you failed the test
+appears in parentheses. For example, (9.6x) in the union() column
+indicates that it uses 9.6x too many calls.
+
+
+Tests 2a-2d: Check whether number of calls to union(), connected(), and find()
+             is a constant per call to open(), isFull(), and percolates().
+             The table shows the maximum number of union(), connected(), and
+             find() calls made during a single call to open(), isFull(), and
+             percolates().
+
+                 n     per open()      per isOpen()    per isFull()    per percolates()
+---------------------------------------------------------------------------------------------
+=> passed       32        4               0               1               1
+=> passed      128        4               0               1               1
+=> passed      512        4               0               1               1
+=> passed     1024        4               0               1               1
+==> 4/4 tests passed
+
+Total: 9/9 tests passed!
+
+================================================================

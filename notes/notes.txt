@@ -1,0 +1,12 @@
+
+http://algs4.cs.princeton.edu/code/
+http://algs4.cs.princeton.edu/code/javadoc/
+export CLASSPATH=$CLASSPATH:~/algs4/algs4.jar
+
+// Include in the same folder as the .java source code
+algs4.jar
+
+// Import this
+import edu.princeton.cs.algs4.MinPQ;
+import edu.princeton.cs.algs4.StdIn;
+
