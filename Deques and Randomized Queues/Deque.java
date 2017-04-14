@@ -33,7 +33,7 @@ public class Deque<Item> implements Iterable<Item> {
 	public void addFirst(Item item) {
         if (item == null) throw new NullPointerException();
 
-		Node<Item> oldfirst = first;
+        Node<Item> oldfirst = first;
         first = new Node<Item>();
         first.item = item;
         first.next = oldfirst;
@@ -43,23 +43,23 @@ public class Deque<Item> implements Iterable<Item> {
 	public void addLast(Item item) {
         if(item == null) throw new NullPointerException();
 
-		Node<Item> oldlast = last;
+        Node<Item> oldlast = last;
 
-		last = new Node<Item>();
-		last.item = item;
-		last.next = null;
+        last = new Node<Item>();
+        last.item = item;
+        last.next = null;
 
-		if (isEmpty())
-			first = last;
-		else {
-			oldlast.next = last;
-		}
+        if (isEmpty())
+            first = last;
+        else {
+            oldlast.next = last;
+        }
 
-		n++;
+        n++;
 	}
 
 	public Item removeFirst() {
-		if (isEmpty()) throw new NoSuchElementException();
+        if(isEmpty()) throw new NoSuchElementException();
         Item item = first.item;        // save item to return
         first = first.next;            // delete first node
         n--;
@@ -67,21 +67,21 @@ public class Deque<Item> implements Iterable<Item> {
      }
 
 	public Item removeLast() {
-		if (isEmpty()) throw new NoSuchElementException();
+        if (isEmpty()) throw new NoSuchElementException();
         Item item = last.item;
 
         Node<Item> node = first;
 
         // If the only node on the list
         if(node.next == null) {
-        	first = null;
-        	return item;
+            first = null;
+            return item;
         }
 
         while(node.next.next != null) {
-        	node = node.next;
+            node = node.next;
         }
-       	node.next = null;
+        node.next = null;
 
         n--;
         return item;
@@ -118,7 +118,7 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
 	public static void main(String[] args) {
-		Deque<String> dequeue = new Deque<String>();
+        Deque<String> dequeue = new Deque<String>();
 
         Integer c = 0;
 
@@ -138,7 +138,7 @@ public class Deque<Item> implements Iterable<Item> {
                     dequeue.removeLast();
 
             c++;
-			StdOut.println(dequeue.privateToString());
+            StdOut.println(dequeue.privateToString());
         }
 
         StdOut.println("(" + dequeue.size() + " left on dequeue)");
