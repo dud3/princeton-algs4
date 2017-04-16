@@ -2,17 +2,14 @@
  *  Compilation:  javac Point.java
  *  Execution:    java Point
  *  Dependencies: none
- *
+ *  
  *  An immutable data type for points in the plane.
  *  For use on Coursera, Algorithms Part I programming assignment.
  *
  ******************************************************************************/
 
 import java.util.Comparator;
-
 import edu.princeton.cs.algs4.StdDraw;
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
 
 public class Point implements Comparable<Point> {
 
@@ -62,19 +59,7 @@ public class Point implements Comparable<Point> {
      * @return the slope between this point and the specified point
      */
     public double slopeTo(Point that) {
-        if((this.y == that.y) && ((this.x - that.x) != 0)) {
-            return +0.0;
-        }
-
-        if((this.x == that.x) && ((this.y - that.y) != 0)) {
-            return Double.POSITIVE_INFINITY;
-        }
-
-        if((this.x == that.x) && (this.y == that.y)) {
-            return Double.NEGATIVE_INFINITY;
-        }
-
-        return ((that.y - this.y) / (double)(that.x - this.x));
+        /* YOUR CODE HERE */
     }
 
     /**
@@ -90,11 +75,7 @@ public class Point implements Comparable<Point> {
      *         argument point
      */
     public int compareTo(Point that) {
-        int diff = this.y - that.y;
-        if (diff == 0) {
-            diff = this.x - that.x;
-        }
-        return diff;
+        /* YOUR CODE HERE */
     }
 
     /**
@@ -104,19 +85,7 @@ public class Point implements Comparable<Point> {
      * @return the Comparator that defines this ordering on points
      */
     public Comparator<Point> slopeOrder() {
-        return new Comparator<Point>() {
-            @Override
-            public int compare(Point p1, Point p2) {
-                double slopeDiff = slopeTo(p1) - slopeTo(p2);
-                if (slopeDiff > 0) {
-                    return 1;
-                } else if (slopeDiff < 0) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            }
-        };
+        /* YOUR CODE HERE */
     }
 
 
@@ -136,15 +105,6 @@ public class Point implements Comparable<Point> {
      * Unit tests the Point data type.
      */
     public static void main(String[] args) {
-        Point[] line = new Point[4];
-        for(int i = 0; i < line.length; i++) {
-            line[i] = new Point(i, i + 1);
-        }
-
-        Point p1 = new Point(1, 1);
-        StdOut.println(p1.toString());
-
-        Point p2 = new Point(2, 2);
-        StdOut.println(p2.toString());
+        /* YOUR CODE HERE */
     }
 }
